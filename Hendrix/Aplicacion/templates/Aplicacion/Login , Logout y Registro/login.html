@@ -1,0 +1,21 @@
+{% extends "Aplicacion/Estetica/index.html" %}
+
+
+{% block titulo %}
+<h1 class="mb-5">Bienvenido</h1>
+<h2 class="mb-5">Login</h2>
+{% endblock titulo %}
+
+
+{% block contenido %}
+    
+<form action="" method="post">
+    {% csrf_token %}
+    <!-- Comentario  -->
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Ingresar">
+</form>
+
+{% endblock contenido %}

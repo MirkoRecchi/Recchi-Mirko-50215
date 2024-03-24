@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Curso de Python de CoderHouse" />
+        <meta name="author" content="Mirko Recchi" />
+        <title>Hendrix</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <!-- Font Awesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+          
+    </head>
+
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="{% url 'inicio' %}">Hendrix</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">  
+                    {% if  user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'alumno' %}">Alumnos</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'comision' %}">Comisiones</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'materia' %}">Materias</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'mesa' %}">Mesas </a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'examen' %}">Examenes</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'calificacion' %}">Calificaciones</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'cursado' %}">Cursado</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'modelo' %}">Modelos</a></li>
+                        <div class="text-center">
+                        <a  href="{% url 'subir_avatar' %}" ><img src="{{ request.session.avatar }}" height="60px" weight="60px"/></a>
+                        </div>
+                        <p style="color:green">[{{user.username}}]</p>
+
+                        &nbsp;
+                                               
+                        <a href="{% url 'perfil' %}">
+                            <i aria-hidden="true" class="fa fa-solid fa-address-card fa-2x"></i>
+                            <span class="fa fa-sr-only fa-2x">Perfil</span>
+                        </a>
+                        &nbsp;
+                        <a href="{% url 'logout' %}">
+                            <i class="fa fa-solid fa-door-open fa-2x"></i>
+                            <span class="fa fa-sr-only fa-2x">Logout</span>
+                        </a>    
+                        
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'inicioprelogin' %}"></a></li> </ul>
+                        <a href="{% url 'login' %}">
+                            <i aria-hidden="true" class="fa fa-solid fa-arrow-right-to-bracket fa-2x"></i>
+                            <span class="fa fa-sr-only fa-2x">Login</span>
+                        </a>
+                        &nbsp;
+                        <a href="{% url 'registro' %}">
+                            <i aria-hidden="true" class="fa fa-regular fa-registered fa-2x"></i>
+                            <span class="fa fa-sr-only fa-2x">Registro</span>
+                        </a> 
+                        &nbsp;
+                        <a href="{% url 'acercademi' %}">
+                            <i aria-hidden="true" class="fa fa-regular fa-user fa-2x"></i>
+                            <span class="fa fa-sr-only fa-2x">Acerca de mi</span>
+                        </a> 
+                    {% endif %}         
+                </div>
+            </div>
+        </nav>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{% static 'assets/img/home-bg.jpg' %}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                        {% if  user.is_authenticated %}    
+                            {% block titulo %}
+                                <h3 class="mb-5"><em>Sistema de Autogestion de Alumnos</em></h3>
+                            {% endblock titulo %}
+                        {% else %}
+                                <h3 class="mb-5"><em></em></h3>
+                                <span class="subheading"></span>
+                        {% endif %}   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        
+        {% block contenido %}
+            
+        {% endblock contenido %}
+            
+        

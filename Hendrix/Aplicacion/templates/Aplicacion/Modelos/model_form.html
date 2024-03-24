@@ -1,0 +1,30 @@
+{% extends "Aplicacion/Estetica/index.html" %}
+
+{% block titulo %}
+<h3 class="mb-5"><em>Agregue un modelo de un final</em></h3>
+{% endblock titulo %}
+
+
+
+{% block contenido %}
+
+<form action="" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <label for="">Nombre de la materia</label>
+    <input type="text" name="NombreMateria" id="NombreMateria">
+    <br>
+    <label for="">Dia</label>
+    <input type="text" name="dia" id="dia">
+    <br>
+    <label>Imagen</label>
+    <input type="file" name="imagen" id="imagen">
+    <br>
+    <input type="submit" value="Guardar">
+
+</form>
+
+
+{% endblock contenido %}
+
+

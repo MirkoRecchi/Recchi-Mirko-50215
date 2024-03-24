@@ -1,0 +1,33 @@
+{% extends "Aplicacion/Estetica/index.html" %}
+
+
+{% block titulo %}
+<h1 class="mb-5">Comisiones</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Turno</th>
+            <th>Horario</th>
+            <th>Numero Comision</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in comision_list  %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.turno }}</td>
+            <td>{{ c.horario }}</td>
+            <td>{{ c.numcomision }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

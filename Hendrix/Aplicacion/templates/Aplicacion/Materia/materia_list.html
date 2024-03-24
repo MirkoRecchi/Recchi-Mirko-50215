@@ -1,0 +1,33 @@
+{% extends "Aplicacion/Estetica/index.html" %}
+
+
+{% block titulo %}
+<h1 class="mb-5">Materias</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Año</th>
+            <th>Correlatividad</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for m in materia_list  %}
+        <tr>
+            <td>{{ m.id }}</td>
+            <td>{{ m.nombre }}</td>
+            <td>{{ m.año }}</td>
+            <td>{{ m.correlatividad }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

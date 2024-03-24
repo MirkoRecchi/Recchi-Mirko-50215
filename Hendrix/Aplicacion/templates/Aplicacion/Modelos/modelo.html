@@ -1,0 +1,48 @@
+{% extends "Aplicacion/Estetica/index.html" %}
+
+
+{% block titulo %}
+<h1 class="mb-5">Modelos</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+
+<table>
+    <tr>
+        <td>
+            <a href="{% url 'SubirModelo' %}">
+                <i aria-hidden="true" class="fa fa-solid fa-plus-minus fa-2x"></i>
+                <span class="fa fa-sr-only fa-2x">Crear Cursado</span>
+            </a>
+        </td>        
+    </tr>
+</table>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre de la materia</th>
+            <th>Dia</th>
+            <th>Examen</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for m in modelo  %}
+        <tr>
+            <td>{{ m.id }}</td>
+            <td>{{ m.NombreMateria }}</td>
+            <td>{{ m.dia }}</td>
+            <td>
+            {% if m.imagen %}    
+            <img src="{{m.imagen.url}}" width="500px" height="500px">
+            {% endif%}
+            </td>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

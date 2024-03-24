@@ -1,0 +1,58 @@
+{% extends "Aplicacion/Estetica/index.html" %}
+
+
+{% block titulo %}
+<h1 class="mb-5">Cursado</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<table>
+    <tr>
+        <td>
+            <a href="{% url 'cursado_create' %}">
+                <i aria-hidden="true" class="fa fa-solid fa-plus-minus fa-2x"></i>
+                <span class="fa fa-sr-only fa-2x">Crear Cursado</span>
+            </a>
+        </td>        
+    </tr>
+</table>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre del alumno</th>
+            <th>Numero de comision</th>
+            <th>Turno</th>
+            <th>Operaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in cursado_list  %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.nombrealumno }}</td>
+            <td>{{ c.numcomision }}</td>
+            <td>{{ c.turno }}</td>
+            <td>
+                <a
+                  href="{% url 'cursado_update' c.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                  href="{% url 'cursado_delete' c.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>                
+            </td>  
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}
